@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
+    <link href="../static/css/bootstrap.rtl.css" rel="stylesheet">
+    <link href="../static/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/mystyle.css">
+    <title>المدارس</title>
+</head>
+
+<body dir="rtl">
+
+
+    {% include "header.html" %}
+
+
+
+    <div class="container mt-3 container-dark ">
+        <table class="table row table2 ">
+            <thead class="e-exam-primary-color ">
+                <tr class="row h-60 ">
+
+                    <th class="col-12 ">
+
+                        <form class="card p-1 card-form " dir="ltr ">
+                            <div class="input-group input-group-sm ">
+                                <input dir="rtl " type="text " class="form-control " placeholder="أدخل إسم المدرسه ">
+                                <button type="submit " class="btn search-form ">بحث</button>
+                            </div>
+                        </form>
+                    </th>
+                </tr>
+
+
+
+                <tr class="row ">
+                    <th class="col-2 ">اسم المدرسة</th>
+                    <th class="col-2 ">اسم المدير</th>
+                    <th class="col-2 ">الايميل</th>
+                    <th class="col-2 ">الهاتف</th>
+                    <th class="col-2 ">تعديل</th>
+                    <th class="col-2 ">حذف</th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                {% for school in schools %}
+                <tr class="items row ">
+                    <td class="col-2 align-self-center "> {{school}} </td>
+                    <td class="col-2 align-self-center "> {{  school.admin_name}}</td>
+                    <td class="col-2 align-self-center ">{{ school.email }}</td>
+                    <td class="col-2 align-self-center ">{{ school.phone_number }}</td>
+                    <td class="col-2 align-self-center ">
+                        <a href="# "><img width="18px " height="18px " src="../static/img/pencil.png " alt=" "></a>
+                    </td>
+                    <td class="col-2 align-self-center ">
+                        <a href="# "><img width="18px " height="18px " src="../static/img/delete.png " alt=" "></a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                <tr class="items row justify-content-center ">
+                    <th class="col-6 ">
+                        <form action="Addschool.html " method="post ">
+                            <svg id="plus-circle-svgrepo-com " xmlns="http://www.w3.org/2000/svg " width="15.394 " height="15.394 " viewBox="0 0 26.394 26.394 ">
+              <path id="Path_11 " data-name="Path 11 " d="M13.515,6a1.253,1.253,0,0,1,1.253,1.253v5.01h5.01a1.253,1.253,0,1,1,0,2.505h-5.01v5.01a1.253,1.253,0,0,1-2.505,0v-5.01H7.253a1.253,1.253,0,1,1,0-2.505h5.01V7.253A1.253,1.253,0,0,1,13.515,6Z
+                        " transform="translate(-0.318 -0.318) " fill="#08a1ff "/>
+              <path id="Path_12 " data-name="Path 12 " d="M1,14.2a13.2,13.2,0,1,1,13.2,13.2A13.2,13.2,0,0,1,1,14.2ZM14.2,3.4a10.8,10.8,0,1,0,10.8,10.8A10.8,10.8,0,0,0,14.2,3.4Z " transform="translate(-1 -1) " fill="#08a1ff " fill-rule="evenodd "/>
+            </svg>
+                            <a href="{% url 'add_school' %} "> <input type="submit " value="إضافة مدرسة " class="btn btn-link new_model "></a>
+                        </form>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="../static/js/bootstrap.js"></script>
+    <script src="../static/js/bootstrap.bundle.js"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+</body>
+
+</html>
